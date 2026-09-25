@@ -1,0 +1,1368 @@
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    line-height: 1.6;
+    color: #dbeafe;
+    background: #020817;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+:root {
+    --blue: #008cff;
+    --blue-light: #38bdf8;
+    --blue-dark: #0369a1;
+    --cyan: #00e5ff;
+
+    --dark: #020617;
+    --dark-2: #061329;
+    --dark-3: #0a1d38;
+
+    --text: #dbeafe;
+    --text-muted: #94a3b8;
+
+    --border: rgba(0, 140, 255, 0.25);
+
+    --glow:
+        0 0 10px rgba(0, 140, 255, 0.5),
+        0 0 30px rgba(0, 140, 255, 0.2);
+}
+
+
+/* =========================================================
+   CONTENEUR
+========================================================= */
+
+.boxed {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 25px;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+.gap20 {
+    gap: 20px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.w100 {
+    width: 100%;
+}
+
+.w50 {
+    width: calc(50% - 10px);
+}
+
+.w40 {
+    width: 38%;
+}
+
+.w60 {
+    width: 58%;
+}
+
+.w32 {
+    width: calc(33.33% - 14px);
+}
+
+.w25 {
+    width: calc(25% - 15px);
+}
+
+
+/* =========================================================
+   EFFET GRILLE HIGH TECH
+========================================================= */
+
+.section {
+    position: relative;
+    overflow: hidden;
+}
+
+.section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        linear-gradient(rgba(0, 140, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 140, 255, 0.035) 1px, transparent 1px);
+
+    background-size: 45px 45px;
+
+    pointer-events: none;
+}
+
+.section > .boxed {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    background: rgba(2, 8, 23, 0.94);
+
+    backdrop-filter: blur(15px);
+
+    border-bottom: 1px solid rgba(0, 140, 255, 0.35);
+
+    box-shadow:
+        0 5px 30px rgba(0, 0, 0, 0.4),
+        0 0 20px rgba(0, 140, 255, 0.08);
+}
+
+header .boxed {
+    min-height: 78px;
+}
+
+header .flex {
+    align-items: center;
+    min-height: 78px;
+}
+
+
+/* LOGO */
+
+.head-logo img {
+    height: 55px;
+    width: 55px;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+
+    border: 2px solid var(--blue);
+
+    box-shadow:
+        0 0 10px rgba(0, 140, 255, 0.8),
+        0 0 25px rgba(0, 140, 255, 0.3);
+
+    transition: 0.3s;
+}
+
+.head-logo img:hover {
+    transform: rotate(5deg) scale(1.08);
+    box-shadow:
+        0 0 15px rgba(0, 229, 255, 0.9),
+        0 0 35px rgba(0, 140, 255, 0.5);
+}
+
+
+/* MENU */
+
+.header-menu {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.header-menu li {
+    list-style: none;
+}
+
+.header-menu a {
+    position: relative;
+
+    color: #c7ddf7;
+
+    font-size: 0.95rem;
+    font-weight: 600;
+
+    padding: 10px 0;
+
+    transition: 0.3s;
+}
+
+.header-menu a::before {
+    content: "<";
+    color: var(--blue);
+    opacity: 0;
+
+    margin-right: 3px;
+
+    transition: 0.3s;
+}
+
+.header-menu a::after {
+    content: "/>";
+
+    color: var(--cyan);
+    opacity: 0;
+
+    margin-left: 3px;
+
+    transition: 0.3s;
+}
+
+.header-menu a:hover {
+    color: white;
+
+    text-shadow:
+        0 0 8px rgba(0, 140, 255, 0.8);
+}
+
+.header-menu a:hover::before,
+.header-menu a:hover::after {
+    opacity: 1;
+}
+
+
+/* =========================================================
+   ACCUEIL
+========================================================= */
+
+#accueil {
+    position: relative;
+
+    height: 92vh;
+    min-height: 650px;
+
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #020617;
+}
+
+
+/* TON IMAGE EST CONSERVÉE */
+
+.slider-background {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    filter:
+        brightness(0.38)
+        contrast(1.15)
+        saturate(1.15);
+
+    transform: scale(1.04);
+
+    z-index: 0;
+}
+
+
+/* VOILE BLEU */
+
+#accueil::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(2, 8, 23, 0.9),
+            rgba(2, 8, 23, 0.45),
+            rgba(0, 80, 180, 0.25)
+        );
+
+    z-index: 1;
+}
+
+
+/* CONTENU */
+
+#accueil .boxed {
+    position: relative;
+    z-index: 3;
+
+    color: white;
+
+    width: 100%;
+}
+
+
+/* PETITE LIGNE TECH */
+
+#accueil .boxed::before {
+    content: "BTS SIO  //  CYBERSÉCURITÉ  //  DÉVELOPPEMENT";
+
+    display: block;
+
+    color: var(--cyan);
+
+    font-family: monospace;
+
+    font-size: 0.9rem;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 20px;
+
+    text-shadow:
+        0 0 10px rgba(0, 229, 255, 0.8);
+}
+
+
+/* TITRE */
+
+#accueil h1 {
+    font-size: 4.5rem;
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+
+    color: white;
+
+    margin-bottom: 20px;
+
+    text-shadow:
+        0 0 10px rgba(0, 140, 255, 0.8),
+        0 0 30px rgba(0, 140, 255, 0.5),
+        0 4px 10px rgba(0, 0, 0, 0.9);
+}
+
+
+/* MOTIF TERMINAL */
+
+#accueil h1::before {
+    content: "> ";
+
+    color: var(--blue-light);
+
+    font-family: monospace;
+}
+
+
+/* SOUS-TITRE */
+
+#accueil p {
+    font-size: 1.5rem;
+
+    color: #bfdbfe;
+
+    font-weight: 500;
+
+    text-shadow:
+        0 2px 10px black;
+}
+
+
+/* =========================================================
+   SECTIONS
+========================================================= */
+
+.section {
+    padding: 100px 0;
+}
+
+#apropos,
+#projets,
+#stages {
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(0, 140, 255, 0.12),
+            transparent 35%
+        ),
+        #020617;
+}
+
+#competences,
+#realisations,
+#veille {
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(0, 140, 255, 0.13),
+            transparent 35%
+        ),
+        #061329;
+}
+
+
+/* =========================================================
+   TITRES
+========================================================= */
+
+.section h2 {
+    position: relative;
+
+    font-size: 2.7rem;
+
+    font-weight: 900;
+
+    color: white;
+
+    margin-bottom: 55px;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+
+    text-shadow:
+        0 0 15px rgba(0, 140, 255, 0.45);
+}
+
+
+/* PETIT CODE DEV */
+
+.section h2::before {
+    content: "// ";
+
+    color: var(--blue);
+
+    font-family: monospace;
+}
+
+
+/* LIGNE BLEUE */
+
+.section h2::after {
+    content: "";
+
+    display: block;
+
+    width: 90px;
+    height: 4px;
+
+    margin: 18px auto 0;
+
+    background: linear-gradient(
+        90deg,
+        var(--blue),
+        var(--cyan)
+    );
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 0 10px rgba(0, 140, 255, 0.8),
+        0 0 25px rgba(0, 140, 255, 0.4);
+}
+
+
+/* =========================================================
+   À PROPOS
+========================================================= */
+
+#apropos p {
+    max-width: 850px;
+
+    margin: 0 auto 20px;
+
+    font-size: 1.15rem;
+
+    color: var(--text-muted);
+
+    text-align: center;
+}
+
+#apropos p strong {
+    color: var(--blue-light);
+}
+
+
+/* =========================================================
+   COMPÉTENCES
+========================================================= */
+
+.skill {
+    position: relative;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(10, 29, 56, 0.95),
+            rgba(3, 15, 32, 0.95)
+        );
+
+    padding: 35px 20px;
+
+    border-radius: 5px;
+
+    border: 1px solid var(--border);
+
+    border-top: 3px solid var(--blue);
+
+    box-shadow:
+        0 10px 35px rgba(0, 0, 0, 0.3);
+
+    transition: 0.35s;
+
+    overflow: hidden;
+}
+
+
+/* LIGNE DÉCORATIVE */
+
+.skill::before {
+    content: "01";
+
+    position: absolute;
+
+    top: 10px;
+    right: 15px;
+
+    font-family: monospace;
+
+    font-size: 0.75rem;
+
+    color: rgba(56, 189, 248, 0.35);
+}
+
+.skill:hover {
+    transform: translateY(-10px);
+
+    border-color: var(--blue);
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.5),
+        0 0 25px rgba(0, 140, 255, 0.2);
+}
+
+.skill img {
+    width: 80px;
+    height: 80px;
+
+    object-fit: contain;
+
+    margin: 0 auto 20px;
+
+    filter:
+        drop-shadow(0 0 8px rgba(0, 140, 255, 0.45));
+}
+
+.skill h3 {
+    color: var(--blue-light);
+
+    font-size: 1.25rem;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   CARTES
+========================================================= */
+
+.card {
+    position: relative;
+
+    background:
+        linear-gradient(
+            145deg,
+            #0a1d38,
+            #020b1c
+        );
+
+    padding: 32px;
+
+    border-radius: 5px;
+
+    border: 1px solid rgba(0, 140, 255, 0.25);
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.35);
+
+    transition: 0.35s;
+
+    overflow: hidden;
+}
+
+
+/* PETIT TRAIT BLEU */
+
+.card::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 3px;
+    height: 100%;
+
+    background: linear-gradient(
+        to bottom,
+        var(--blue),
+        var(--cyan)
+    );
+
+    box-shadow:
+        0 0 12px rgba(0, 140, 255, 0.7);
+}
+
+.card:hover {
+    transform: translateY(-8px);
+
+    border-color: rgba(0, 140, 255, 0.65);
+
+    box-shadow:
+        0 15px 45px rgba(0, 0, 0, 0.5),
+        0 0 25px rgba(0, 140, 255, 0.15);
+}
+
+.card h3 {
+    color: var(--blue-light);
+
+    margin-bottom: 15px;
+
+    font-size: 1.3rem;
+
+    text-transform: uppercase;
+}
+
+.card p {
+    color: var(--text-muted);
+
+    margin-bottom: 12px;
+}
+
+
+/* =========================================================
+   RÉALISATIONS
+========================================================= */
+
+.realisation {
+    position: relative;
+
+    background: #020b1c;
+
+    border: 1px solid var(--border);
+
+    border-radius: 5px;
+
+    overflow: hidden;
+
+    transition: 0.35s;
+}
+
+.realisation:hover {
+    transform: translateY(-8px);
+
+    box-shadow:
+        0 0 30px rgba(0, 140, 255, 0.2);
+}
+
+.realisation img {
+    width: 100%;
+
+    max-height: 230px;
+
+    object-fit: cover;
+
+    border-bottom: 2px solid var(--blue);
+
+    transition: 0.4s;
+}
+
+.realisation:hover img {
+    transform: scale(1.03);
+}
+
+.realisation h3 {
+    color: var(--blue-light);
+
+    padding: 20px;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   PROJETS
+========================================================= */
+
+#projets .card {
+    min-height: 240px;
+
+    border-left: 4px solid var(--blue);
+}
+
+#projets .card h3::before {
+    content: ">";
+    color: var(--cyan);
+
+    font-family: monospace;
+
+    margin-right: 8px;
+}
+
+
+/* =========================================================
+   CV
+========================================================= */
+
+#cv {
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(0, 140, 255, 0.18),
+            transparent 50%
+        ),
+        #020617;
+
+    color: white;
+}
+
+#cv .card {
+    color: var(--text);
+}
+
+#cv .card h3 {
+    color: var(--blue-light);
+}
+
+#cv .btn {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    background: transparent;
+
+    color: var(--cyan);
+
+    padding: 14px 28px;
+
+    border: 1px solid var(--blue);
+
+    border-radius: 4px;
+
+    font-family: monospace;
+
+    font-weight: 700;
+
+    box-shadow:
+        0 0 15px rgba(0, 140, 255, 0.2);
+
+    transition: 0.3s;
+}
+
+#cv .btn:hover {
+    color: white;
+
+    background: var(--blue);
+
+    box-shadow:
+        0 0 15px rgba(0, 140, 255, 0.8),
+        0 0 35px rgba(0, 140, 255, 0.4);
+
+    transform: translateY(-4px);
+}
+
+
+/* =========================================================
+   STAGES
+========================================================= */
+
+#stages .card {
+    border-left: 4px solid var(--blue);
+}
+
+#stages .card h3::before {
+    content: "STAGE // ";
+
+    color: var(--cyan);
+
+    font-family: monospace;
+
+    font-size: 0.8rem;
+}
+
+
+/* =========================================================
+   VEILLE
+========================================================= */
+
+#veille .card {
+    height: 100%;
+
+    border-top: 3px solid var(--blue);
+}
+
+#veille .card h3::before {
+    content: ">> ";
+
+    color: var(--cyan);
+
+    font-family: monospace;
+}
+
+#veille a {
+    display: inline-block;
+
+    margin-top: 12px;
+
+    color: var(--cyan);
+
+    font-family: monospace;
+
+    font-weight: 700;
+
+    border-bottom: 1px solid transparent;
+
+    transition: 0.3s;
+}
+
+#veille a:hover {
+    color: white;
+
+    border-bottom-color: var(--cyan);
+
+    text-shadow:
+        0 0 10px rgba(0, 229, 255, 0.8);
+}
+
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+#contact {
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(0, 140, 255, 0.2),
+            transparent 50%
+        ),
+        #010713;
+
+    color: white;
+}
+
+#contact h2 {
+    color: white;
+}
+
+.contact {
+    position: relative;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(8, 30, 58, 0.9),
+            rgba(2, 12, 25, 0.9)
+        );
+
+    padding: 30px 20px;
+
+    border-radius: 5px;
+
+    border: 1px solid rgba(0, 140, 255, 0.3);
+
+    transition: 0.35s;
+}
+
+.contact:hover {
+    transform: translateY(-8px);
+
+    border-color: var(--blue);
+
+    box-shadow:
+        0 0 25px rgba(0, 140, 255, 0.25);
+}
+
+.contact .icon {
+    font-size: 2.8rem;
+
+    color: var(--cyan);
+
+    margin-bottom: 12px;
+
+    display: block;
+
+    text-shadow:
+        0 0 15px rgba(0, 229, 255, 0.7);
+}
+
+.contact .label {
+    display: block;
+
+    color: var(--blue-light);
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 8px;
+}
+
+.contact .value {
+    display: block;
+
+    color: var(--text-muted);
+
+    font-size: 1rem;
+
+    word-break: break-word;
+}
+
+.contact a {
+    color: var(--cyan);
+}
+
+.contact a:hover {
+    color: white;
+
+    text-shadow:
+        0 0 10px rgba(0, 229, 255, 0.8);
+}
+
+
+/* =========================================================
+   BOUTONS
+========================================================= */
+
+.btn {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    background: var(--blue);
+
+    color: white;
+
+    padding: 13px 27px;
+
+    border: 1px solid var(--blue);
+
+    border-radius: 4px;
+
+    font-family: monospace;
+
+    font-weight: 700;
+
+    transition: 0.3s;
+
+    box-shadow:
+        0 0 15px rgba(0, 140, 255, 0.25);
+}
+
+.btn:hover {
+    background: var(--blue-light);
+
+    border-color: var(--cyan);
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 0 15px rgba(0, 229, 255, 0.5),
+        0 0 30px rgba(0, 140, 255, 0.3);
+}
+
+
+/* =========================================================
+   ICÔNES
+========================================================= */
+
+.material-symbols-outlined {
+    vertical-align: middle;
+}
+
+
+/* =========================================================
+   PETIT EFFET TERMINAL
+========================================================= */
+
+code,
+pre {
+    font-family: "Courier New", monospace;
+    color: var(--cyan);
+}
+
+
+/* =========================================================
+   RESPONSIVE TABLETTE
+========================================================= */
+
+@media (max-width: 992px) {
+
+    .header-menu {
+        gap: 15px;
+    }
+
+    .header-menu a {
+        font-size: 0.85rem;
+    }
+
+    .w50,
+    .w40,
+    .w60 {
+        width: 100%;
+    }
+
+    .w32 {
+        width: calc(50% - 10px);
+    }
+
+    .w25 {
+        width: calc(50% - 10px);
+    }
+
+    #accueil h1 {
+        font-size: 3.5rem;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .boxed {
+        padding: 0 15px;
+    }
+
+    header .boxed,
+    header .flex {
+        min-height: 65px;
+    }
+
+    .head-logo img {
+        width: 45px;
+        height: 45px;
+    }
+
+    .header-menu {
+        position: fixed;
+
+        top: 65px;
+        left: -100%;
+
+        width: 100%;
+
+        background: rgba(2, 8, 23, 0.98);
+
+        backdrop-filter: blur(15px);
+
+        flex-direction: column;
+
+        padding: 25px;
+
+        gap: 18px;
+
+        border-bottom: 1px solid var(--blue);
+
+        transition: left 0.4s ease;
+    }
+
+    .header-menu.active {
+        left: 0;
+    }
+
+    .header-menu a {
+        font-size: 1rem;
+    }
+
+    .menu-toggle {
+        display: block;
+
+        color: var(--blue-light);
+
+        font-size: 26px;
+    }
+
+    #accueil {
+        height: 80vh;
+        min-height: 520px;
+    }
+
+    #accueil h1 {
+        font-size: 2.5rem;
+        line-height: 1.2;
+    }
+
+    #accueil p {
+        font-size: 1.15rem;
+    }
+
+    #accueil .boxed::before {
+        font-size: 0.65rem;
+        letter-spacing: 1px;
+    }
+
+    .section {
+        padding: 75px 0;
+    }
+
+    .section h2 {
+        font-size: 2rem;
+    }
+
+    .w25,
+    .w32,
+    .w50,
+    .w40,
+    .w60 {
+        width: 100%;
+    }
+
+    .flex {
+        flex-direction: column;
+    }
+
+    .card,
+    .skill,
+    .contact {
+        width: 100%;
+    }
+    #accueil {
+    position: relative;
+    min-height: 92vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    overflow: hidden;
+
+    background: #020817;
+}
+
+/* IMAGE DE FOND */
+
+#accueil .slider-background {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    opacity: 0.38;
+
+    z-index: 0;
+}
+
+/* VOILE SUR L'IMAGE */
+
+#accueil::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(2, 8, 23, 0.65),
+            rgba(2, 8, 23, 0.45),
+            rgba(2, 8, 23, 0.85)
+        );
+
+    z-index: 1;
+}
+
+/* CONTENU */
+
+.accueil-content {
+    position: relative;
+    z-index: 2;
+
+    width: 90%;
+    max-width: 1000px;
+
+    margin: auto;
+}
+
+/* PETIT TITRE */
+
+.accueil-intro {
+    margin-bottom: 18px;
+
+    color: #38bdf8;
+
+    font-family: monospace;
+    font-size: 1rem;
+    font-weight: bold;
+
+    letter-spacing: 4px;
+
+    text-shadow: 0 0 12px #008cff;
+}
+
+/* SAINTHILAIRE */
+
+.accueil h1 {
+    margin: 0;
+
+    color: rgb(241, 243, 248);
+
+    font-size: clamp(3rem, 7vw, 6rem);
+    line-height: 1;
+
+    font-weight: 900;
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    text-shadow:
+        0 0 10px rgba(24, 135, 190, 0.8),
+        0 0 30px rgba(0, 140, 255, 0.4);
+}
+
+/* Lorvagains */
+
+.accueil h1 span {
+    display: block;
+
+    margin-top: 8px;
+
+    color: #00bfff;
+
+    font-size: 0.75em;
+
+    text-transform: none;
+
+    text-shadow:
+        0 0 10px #008cff,
+        0 0 25px #008cff,
+        0 0 50px rgba(0, 140, 255, 0.5);
+}
+
+/* PETITE LIGNE BLEUE */
+
+.accueil-line {
+    width: 90px;
+    height: 4px;
+
+    margin: 25px auto;
+
+    background: #00bfff;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 0 10px #008cff,
+        0 0 25px #008cff;
+}
+
+/* BTS SIO */
+
+.accueil h2 {
+    margin: 0 0 18px;
+
+    color: white;
+
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
+.accueil h2 strong {
+    color: #38bdf8;
+}
+
+/* DESCRIPTION */
+
+.accueil-description {
+    max-width: 650px;
+
+    margin: 0 auto 30px;
+
+    color: #dbeafe;
+
+    font-size: 1.15rem;
+    line-height: 1.7;
+}
+
+/* BOUTON */
+
+.accueil-button {
+    display: inline-block;
+
+    padding: 14px 30px;
+
+    color: white;
+
+    text-decoration: none;
+
+    border: 1px solid #00bfff;
+    border-radius: 6px;
+
+    background: rgba(0, 120, 255, 0.12);
+
+    font-weight: bold;
+
+    box-shadow:
+        0 0 15px rgba(0, 140, 255, 0.25);
+
+    transition: all 0.3s ease;
+}
+
+.accueil-button:hover {
+    color: white;
+
+    background: #008cff;
+
+    box-shadow:
+        0 0 20px #008cff,
+        0 0 40px rgba(0, 140, 255, 0.5);
+
+    transform: translateY(-3px);
+}
